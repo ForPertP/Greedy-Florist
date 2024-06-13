@@ -4,10 +4,11 @@ using namespace std;
 
 vector<string> split_string(string);
 
+
 int getMinimumCost(int k, vector<int> c)
 {
-    std::sort(c.begin(), c.end(), greater<int>());
     int result = 0;
+    std::sort(c.begin(), c.end(), greater<int>());
     
     for (size_t i = 0; i < c.size(); ++i)
     {
@@ -17,6 +18,41 @@ int getMinimumCost(int k, vector<int> c)
     return result;
 }
 
+
+int main()
+{
+    ofstream fout(getenv("OUTPUT_PATH"));
+
+    string nk_temp;
+    getline(cin, nk_temp);
+
+    vector<string> nk = split_string(nk_temp);
+
+    int n = stoi(nk[0]);
+
+    int k = stoi(nk[1]);
+
+    string c_temp_temp;
+    getline(cin, c_temp_temp);
+
+    vector<string> c_temp = split_string(c_temp_temp);
+
+    vector<int> c(n);
+
+    for (int i = 0; i < n; i++) {
+        int c_item = stoi(c_temp[i]);
+
+        c[i] = c_item;
+    }
+
+    int minimumCost = getMinimumCost(k, c);
+
+    fout << minimumCost << "\n";
+
+    fout.close();
+
+    return 0;
+}
 
 vector<string> split_string(string input_string) {
     string::iterator new_end = unique(input_string.begin(), input_string.end(), [] (const char &x, const char &y) {
