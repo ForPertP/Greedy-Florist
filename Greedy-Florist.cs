@@ -39,8 +39,7 @@ class Solution {
 
         int k = Convert.ToInt32(nk[1]);
 
-        int[] c = Array.ConvertAll(Console.ReadLine().Split(' '), cTemp => Convert.ToInt32(cTemp))
-        ;
+        int[] c = Array.ConvertAll(Console.ReadLine().Split(' '), cTemp => Convert.ToInt32(cTemp));
         int minimumCost = getMinimumCost(k, c);
 
         textWriter.WriteLine(minimumCost);
